@@ -136,20 +136,29 @@ namespace TestSheetAddOn
                 int contentrow = headerrow;
                 foreach (TDInstance tdi in ts.Instances.Items)
                 {
-                    oWS.Cells[contentrow, 1] = tdi.DisplayedName;
-                    colcounter = 3;
+                    oWS.Cells[contentrow, 2] = tdi.DisplayedName;
+                    oWS.Cells[contentrow, 3] = "Approved";
+                    oWS.Cells[contentrow, 7] = "High";
+                    oWS.Cells[contentrow, 8] = "PCC";
+                    oWS.Cells[contentrow, 9] = "Drop 1 Collection Strategies";
+                    oWS.Cells[contentrow, 14] = tdi.DisplayedName;
+                    oWS.Cells[contentrow, 4] = "\nPrecondition: \t"+ tdi.Values;
 
-                    for (int i = 0; i < elementWrappers.Count(); i++)
-                    {
-                        TDElementWrapper ewvar = elementWrappers.ElementAt(i);
-                        if (ewvar != null)
-                        {
-                            //tdi.Name += ElementToValueMapper.GetInstanceValueStringForElement(tdi, ew);
-                            string path = ewvar.Path;
-                            oWS.Cells[contentrow, colcounter] = ElementToValueMapper.GetInstanceValueStringForElement(tdi, ewvar);
-                            colcounter = colcounter + 1;
-                        }
-                    }
+
+
+                    //colcounter = 2;
+
+                    //for (int i = 0; i < elementWrappers.Count(); i++)
+                    //{
+                    //    TDElementWrapper ewvar = elementWrappers.ElementAt(i);
+                    //    if (ewvar != null)
+                    //    {
+                    //        tdi.Name += ElementToValueMapper.GetInstanceValueStringForElement(tdi, ew);
+                    //        string path = ewvar.Path;
+                    //        oWS.Cells[contentrow, colcounter] = ElementToValueMapper.GetInstanceValueStringForElement(tdi, ewvar);
+                    //        colcounter = colcounter + 1;
+                    //    }
+                    //}
 
                     contentrow = contentrow + 1;
                 }
