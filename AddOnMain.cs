@@ -41,8 +41,8 @@ namespace TestSheetAddOn
         {
             if (objectToExecuteOn is TestSheet)
             {
-                //Excel information            
-                int headerrow = 1;
+                //Excel information   1         
+                int headerrow = 2;
                 
 
                 Microsoft.Office.Interop.Excel.Application oXL;
@@ -78,43 +78,66 @@ namespace TestSheetAddOn
 
                 //Write header rows
                 int colcounter = 2;
-                oWS.Cells[headerrow, 1] = "Instances";
-                foreach (TDInstance tdheader in ts.Instances.Items)
-                {
-                    
-                    for (int i = 0; i < elementWrappers.Count(); i++)
-                    {
-                        TDElementWrapper ewvarheader = elementWrappers.ElementAt(i);
-                        if (ewvarheader != null)
-                        {                            
-                            string path = ewvarheader.Path;
-                            if (path.Contains('.'))
-                            {
-                                string[] patharray = path.Split('.');
-                                for (int j=0; j< patharray.Length; j++)
-                                {
-                                    oWS.Cells[headerrow + (j*1), colcounter] = patharray[j];
-                                    if (rowcountt< headerrow + (j * 1)) { rowcountt = headerrow + (j * 1); }                                    
-                                }
-                            }
-                            else
-                            {
-                                oWS.Cells[headerrow, colcounter] = path;
-                            }
-                            colcounter = colcounter + 1;
-                        }
-                    }
-                    break;
-                }
+                int headerrow_names = 1;
+                oWS.Cells[headerrow_names, 1] = "Key";
+                oWS.Cells[headerrow_names, 2] = "Name";
+                oWS.Cells[headerrow_names, 3] = "Status";
+                oWS.Cells[headerrow_names, 4] = "Precondition";
+                oWS.Cells[headerrow_names, 5] = "Objective";
+                oWS.Cells[headerrow_names, 6] = "Folder";
+                oWS.Cells[headerrow_names, 7] = "Priority";
+                oWS.Cells[headerrow_names, 8] = "Component";
+                oWS.Cells[headerrow_names, 9] = "Labels";
+                oWS.Cells[headerrow_names, 10] = "Owner";
+                oWS.Cells[headerrow_names, 11] = "Estimated Time";
+                oWS.Cells[headerrow_names, 12] = "Coverage (Issues)";
+                oWS.Cells[headerrow_names, 13] = "Coverage (Pages)";
+                oWS.Cells[headerrow_names, 14] = "Test Script (Step-by-Step) - Step";
+                oWS.Cells[headerrow_names, 15] = "Test Script (Step-by-Step) - Test Data";
+                oWS.Cells[headerrow_names, 16] = "Test Script (Step-by-Step) - Expected Result";
+                oWS.Cells[headerrow_names, 17] = "Test Script (Plain Text))";
+                oWS.Cells[headerrow_names, 18] = "Test Script (BDD)";
 
-                Range oHeader = oWS.Range[oWS.Cells[headerrow, 1], oWS.Cells[rowcountt, colcounter-1]];
-                int contentrow = rowcountt + 1;
+
+
+                //foreach (TDInstance tdheader in ts.Instances.Items)
+                //{
+
+                //    for (int i = 0; i < elementWrappers.Count(); i++)
+                //    {
+                //        TDElementWrapper ewvarheader = elementWrappers.ElementAt(i);
+                //        if (ewvarheader != null)
+                //        {
+                //            string path = ewvarheader.Path;
+                //            if (path.Contains('.'))
+                //            {
+                //                string[] patharray = path.Split('.');
+                //                for (int j = 0; j < patharray.Length; j++)
+                //                {
+                //                    oWS.Cells[headerrow + (j * 1), colcounter] = patharray[j];
+                //                    if (rowcountt < headerrow + (j * 1)) { rowcountt = headerrow + (j * 1); }
+                //                }
+                //            }
+                //            else
+                //            {
+                //                oWS.Cells[headerrow, colcounter] = path;
+
+                //            }
+                //            colcounter = colcounter + 1;
+                //        }
+                //    }
+                //    break;
+                //}
+
+                //Range oHeader = oWS.Range[oWS.Cells[headerrow, 2], oWS.Cells[rowcountt, colcounter-1]];
+                //int contentrow = rowcountt + 1;
 
                 //Write rows -- Instances names
+                int contentrow = headerrow;
                 foreach (TDInstance tdi in ts.Instances.Items)
-                {                    
+                {
                     oWS.Cells[contentrow, 1] = tdi.DisplayedName;
-                    colcounter = 2;
+                    colcounter = 3;
 
                     for (int i = 0; i < elementWrappers.Count(); i++)
                     {
@@ -132,28 +155,28 @@ namespace TestSheetAddOn
                 }
 
                 //Try to get the relationships
-                
+
 
                 //Format excel document
                 oWS.Columns.AutoFit();
                 oWS.Columns.Font.Size = 11;
                 oWS.Columns.Font.Name = "Calibri";
-                Range myCell = oWS.Range[oWS.Cells[rowcountt+1, 2], oWS.Cells[rowcountt + 1, 2]];
-                myCell.Activate();
-                myCell.Application.ActiveWindow.FreezePanes = true;
-                oHeader.Columns.Font.Color = XlRgbColor.rgbWhite;
-                oHeader.Columns.Font.Bold = true;
-                oHeader.Columns.HorizontalAlignment = XlHAlign.xlHAlignCenter;                
-                oHeader.Columns.Interior.Color = XlRgbColor.rgbDarkSlateGrey;
-                Range contents = oWS.Range[oWS.Cells[rowcountt+1, 1], oWS.Cells[contentrow - 1, colcounter-1]];
-                contents.WrapText = true;
-                contents.Borders.LineStyle = XlLineStyle.xlContinuous;
-                contents.Borders.Weight = XlBorderWeight.xlThin;
-                contents.Borders.ColorIndex = XlColorIndex.xlColorIndexAutomatic;
+                //Range myCell = oWS.Range[oWS.Cells[rowcountt+1, 2], oWS.Cells[rowcountt + 1, 2]];
+                //myCell.Activate();
+                //myCell.Application.ActiveWindow.FreezePanes = true;
+                //oHeader.Columns.Font.Color = XlRgbColor.rgbWhite;
+                //oHeader.Columns.Font.Bold = true;
+                //oHeader.Columns.HorizontalAlignment = XlHAlign.xlHAlignCenter;                
+                //oHeader.Columns.Interior.Color = XlRgbColor.rgbDarkSlateGrey;
+                //Range contents = oWS.Range[oWS.Cells[rowcountt+1, 1], oWS.Cells[contentrow - 1, colcounter-1]];
+                //contents.WrapText = true;
+                //contents.Borders.LineStyle = XlLineStyle.xlContinuous;
+                //contents.Borders.Weight = XlBorderWeight.xlThin;
+                //contents.Borders.ColorIndex = XlColorIndex.xlColorIndexAutomatic;
 
                 //Save document
                 System.IO.Directory.CreateDirectory("C:\\Tosca_Projects\\Tosca_Exports");
-                oWB.SaveAs("C:\\Tosca_Projects\\Tosca_Exports\\"+ shname + "_TCD Extract " + DateTime.Now.ToString("MMddyyyy_hhmmss"), Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
+                oWB.SaveAs("C:\\Tosca_Projects\\Tosca_Exports\\"+ shname + "_TCD Extract " +" DEBUG "+ DateTime.Now.ToString("MMddyyyy_hhmmss"), Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault, Type.Missing, Type.Missing,
                 false, false, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlNoChange,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
