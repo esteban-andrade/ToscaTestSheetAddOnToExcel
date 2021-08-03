@@ -142,7 +142,8 @@ namespace TestSheetAddOn
                     oWS.Cells[contentrow, 8] = "PCC";
                     oWS.Cells[contentrow, 9] = "Drop 1 Collection Strategies";
                     oWS.Cells[contentrow, 14] = tdi.DisplayedName;
-                    oWS.Cells[contentrow, 4] = "\nPrecondition: \t"+ tdi.Values;
+                    oWS.Cells[contentrow, 4] = "\nPrecondition: \t" + tdi.Values.ElementAt(0).ValueInstance.DisplayedName +"\nProcess:\t";
+                    oWS.Cells[contentrow, 16] = "\nVerification: \t";
 
 
 
