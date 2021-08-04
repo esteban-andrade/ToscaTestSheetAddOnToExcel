@@ -4,6 +4,19 @@ namespace TestSheetAddOn
 {
     public static class ElementToValueMapper
     {
+
+        public static string GetValuesString (TDInstance current_instance)
+        {
+            string valuesOfInstances = null;
+            string container;         
+
+
+
+            return valuesOfInstances;
+
+        }
+
+
         public static string GetInstanceValueStringForElement(TDInstance topInstance, TDElementWrapper tdElementWrapper)
         {
             string instValueString = null;
@@ -94,7 +107,7 @@ namespace TestSheetAddOn
                 {
                     if (v.ValueInstance != null)
                     {
-                        return v.ValueInstance;
+                        return  v.ValueInstance.Name ;
                     }
                     return v.Value;
                 }
