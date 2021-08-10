@@ -166,19 +166,19 @@ namespace TestSheetAddOn
                     //    }
                     //}
                     //oWS.Cells[contentrow, 4] = "\n"+values+"\n";
-                    //colcounter = 2;
+                    colcounter = 2;
 
-                    //for (int i = 0; i < elementWrappers.Count(); i++)
-                    //{
-                    //    TDElementWrapper ewvar = elementWrappers.ElementAt(i);
-                    //    if (ewvar != null)
-                    //    {
-                    //        tdi.Name += ElementToValueMapper.GetInstanceValueStringForElement(tdi, ew);
-                    //        string path = ewvar.Path;
-                    //        oWS.Cells[contentrow, colcounter] = ElementToValueMapper.GetInstanceValueStringForElement(tdi, ewvar);
-                    //        colcounter = colcounter + 1;
-                    //    }
-                    //}
+                    for (int i = 0; i < elementWrappers.Count(); i++)
+                    {
+                        TDElementWrapper ewvar = elementWrappers.ElementAt(i);
+                        if (ewvar != null)
+                        {
+                            tdi.Name += ElementToValueMapper.GetInstanceValueStringForElement(tdi, ewvar);
+                            string path = ewvar.Path;
+                            oWS.Cells[contentrow, colcounter] = ElementToValueMapper.GetInstanceValueStringForElement(tdi, ewvar);
+                            colcounter = colcounter + 1;
+                        }
+                    }
 
                     contentrow = contentrow + 1;
                 }
