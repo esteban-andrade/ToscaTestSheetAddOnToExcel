@@ -1,0 +1,2 @@
+C:\Users\estan\OneDrive - TRICENTIS\CBA\TestSheetAddOn\TestSheetAddOn\New solution\TestSheetAddOn\bin\Release\TestSheetAddOn.dll
+C:\Users\estan\OneDrive - TRICENTIS\CBA\TestSheetAddOn\TestSheetAddOn\New solution\TestSheetAddOn\bin\Release\TestSheetAddOn.pdb

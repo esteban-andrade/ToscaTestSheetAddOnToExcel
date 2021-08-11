@@ -179,8 +179,8 @@ namespace TestSheetAddOn
         public override Type ApplicableType => typeof(TestSheet);
 
         //Check if it's a testcase folder not just any folder
-        public override bool IsTaskPossible(TCObject obj) => true;
-        public override bool RequiresChangeRights => true;
+        //public override bool IsTaskPossible(TCObject obj) => true;
+        //public override bool RequiresChangeRights => true;
 
         public override TCObject Execute(TCObject objectToExecuteOn, TCAddOnTaskContext taskContext)
         {
@@ -249,15 +249,16 @@ namespace TestSheetAddOn
                 foreach (TDInstance tdi in ts.Instances.Items)
                 {
                     string displayName = ElementToValueMapper.GetInstanceValueStringForElement(tdi, elementWrappers.ElementAt(0));
-                    oWS.Cells[contentrow, 2] = displayName;
+                    oWS.Cells[contentrow, 2] = tdi.DisplayedName;
                     oWS.Cells[contentrow, 3] = "Approved";
                     oWS.Cells[contentrow, 7] = "High";
                     oWS.Cells[contentrow, 8] = "PCC";
                     oWS.Cells[contentrow, 9] = "Drop 1 Collection Strategies";
-                    oWS.Cells[contentrow, 14] = displayName;
+                    //oWS.Cells[contentrow, 14] = displayName;
 
                     //colcounter = 2;
                     string precond = "";
+                    string process = "";
                     string verification = "";
                     for (int i = 0; i < elementWrappers.Count(); i++)
                     {
@@ -266,7 +267,7 @@ namespace TestSheetAddOn
                         {
                             string path = ewvar.Path;
                             //Concatenates all the PreCondition and Process instance values in a string
-                            if(path.Contains("Precondition") || path.Contains("Process"))
+                            if(path.Contains("Precondition") )
                             {
                                 string value = ElementToValueMapper.GetInstanceValueStringForElement(tdi, ewvar);
                                 if(value != null)
@@ -282,6 +283,25 @@ namespace TestSheetAddOn
                                     }
                                     
                                 }
+                            }
+
+                            else if (path.Contains("Process"))
+                            {
+                                string value = ElementToValueMapper.GetInstanceValueStringForElement(tdi, ewvar);
+                                if (value != null)
+                                {
+                                    string[] patharray = path.Split('.');
+                                    if (precond == "")
+                                    {
+                                        process = patharray[patharray.Length - 1] + ": " + value;
+                                    }
+                                    else
+                                    {
+                                        process = process + "\n" + patharray[patharray.Length - 1] + ": " + value;
+                                    }
+
+                                }
+
                             }
                             //Concatenates all the Verification instance values in a string
                             else if (path.Contains("Verification"))
@@ -299,11 +319,12 @@ namespace TestSheetAddOn
                                         verification = verification + "\n" + patharray[patharray.Length - 1] + ": " + value;
                                     }
                                 }
-                            }
+                            } 
                         }
                     }
-                    oWS.Cells[contentrow, 4] = precond;
-                    oWS.Cells[contentrow, 16] = verification;
+                    oWS.Cells[contentrow, 4] = displayName + "\n" + precond;
+                    oWS.Cells[contentrow, 16] = displayName + "\n" + verification;
+                    oWS.Cells[contentrow, 14] = displayName + "\n" + process;
 
                     contentrow = contentrow + 1;
                 }

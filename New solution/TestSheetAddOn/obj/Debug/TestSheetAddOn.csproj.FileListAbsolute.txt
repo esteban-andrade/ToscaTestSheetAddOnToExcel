@@ -43,3 +43,9 @@ C:\Users\Gunjan\Documents\Tricentis\Clients\CBA\TestSheetAddOn\TestSheetAddOn\ob
 C:\Users\Gunjan\Documents\Tricentis\Clients\CBA\TestSheetAddOn\TestSheetAddOn\obj\Debug\TestSheetAddOn.pdb
 C:\Program Files (x86)\TRICENTIS\Tosca Testsuite\ToscaCommander\TestSheetAddOn.dll
 C:\Program Files (x86)\TRICENTIS\Tosca Testsuite\ToscaCommander\TestSheetAddOn.pdb
+C:\Users\estan\OneDrive - TRICENTIS\CBA\TestSheetAddOn\TestSheetAddOn\New solution\TestSheetAddOn\obj\Debug\TestSheetAddOn.csprojAssemblyReference.cache
+C:\Users\estan\OneDrive - TRICENTIS\CBA\TestSheetAddOn\TestSheetAddOn\New solution\TestSheetAddOn\obj\Debug\TestSheetAddOn.frmTDIName.resources
+C:\Users\estan\OneDrive - TRICENTIS\CBA\TestSheetAddOn\TestSheetAddOn\New solution\TestSheetAddOn\obj\Debug\TestSheetAddOn.csproj.GenerateResource.cache
+C:\Users\estan\OneDrive - TRICENTIS\CBA\TestSheetAddOn\TestSheetAddOn\New solution\TestSheetAddOn\obj\Debug\TestSheetAddOn.csproj.CoreCompileInputs.cache
+C:\Users\estan\OneDrive - TRICENTIS\CBA\TestSheetAddOn\TestSheetAddOn\New solution\TestSheetAddOn\obj\Debug\TestSheetAddOn.dll
+C:\Users\estan\OneDrive - TRICENTIS\CBA\TestSheetAddOn\TestSheetAddOn\New solution\TestSheetAddOn\obj\Debug\TestSheetAddOn.pdb
